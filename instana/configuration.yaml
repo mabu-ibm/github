@@ -89,10 +89,10 @@
 # explicitly list the remote filesystems that shall be monitored.
 # The name for the config setting is the device name, that is the first column
 # in mtab / df
-#com.instana.plugin.host:
-#  tags:
-#    - 'production'
-#    - 'app1'
+com.instana.plugin.host:
+  tags:
+    - 'GitConfig'
+    - 'oracle'
 #  filesystems:
 #    - 'server:/usr/local/pub'
 #    - 'tmpfs:/mount/point/path'
