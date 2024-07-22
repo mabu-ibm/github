@@ -1796,11 +1796,11 @@ com.instana.plugin.kafka:
 #      poll_rate: 10 # Poll rate in seconds.
 
 #Turbonomic
-#com.instana.plugin.turbonomic:
-#  enabled: true
-#  host: '<INSERT_TURBONOMIC_SERVER_HERE>'  # Turbonomic Server Host or IP address
-#  target: '<INSERT_TURBONOMIC_TARGET_NAME>' # Name of the target (Instana Server) as configured in Turbonomic
-#  auth:
-#    username: <INSERT_USERNAME_OF_TURBONOMIC_SERVER_HERE>  # User must have administrator, deployer, or automator authority.
-#    password: <INSERT_PASSWORD_OF_TURBONOMIC_SERVER_HERE>
+com.instana.plugin.turbonomic:
+  enabled: true
+  host: 'https://192.168.178.146'  # Turbonomic Server Host or IP address
+  target: 'unit0-tenant0.instanak3s.fritz.box' # Name of the target (Instana Server) as configured in Turbonomic
+  auth:
+    username: administrator  # User must have administrator, deployer, or automator authority.
+    password: passw0rd
 
