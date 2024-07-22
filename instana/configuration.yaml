@@ -1803,4 +1803,9 @@ com.instana.plugin.turbonomic:
   auth:
     username: administrator  # User must have administrator, deployer, or automator authority.
     password: passw0rd
+  executedActions:
+    enable: true
+    poll_rate: 10
+  recommendedActions:
+    enable: true
 
