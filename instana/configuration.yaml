@@ -1369,12 +1369,12 @@ com.instana.plugin.kafka:
 #  enabled: true
 
 # VMware vSphere
-#com.instana.plugin.vsphere:
-#  host: https://<INSERT_HOST_HERE>/sdk
-#  username: <INSERT_USERNAME_HERE>
-#  password: <INSERT_PASSWORD_HERE>
-#  enabled: true
-#  poll_rate: 20 # metrics poll rate in seconds
+com.instana.plugin.vsphere:
+  host: https://192.168.178.181/sdk
+  username: 'administrator@vsphere.local'
+  password: '$T7283esT!'
+  enabled: true
+  poll_rate: 20 # metrics poll rate in seconds
 
 #ZHMC
 #com.instana.plugin.zhmc:
