@@ -1802,6 +1802,6 @@ com.instana.plugin.turbonomic:
   target: 'unit0-tenant0.instanak3s.fritz.box' # Name of the target (Instana Server) as configured in Turbonomic
   auth:
     username: administrator  # User must have administrator, deployer, or automator authority.
-    password: administrator
+    password: passw0rd
 
 
