@@ -1801,7 +1801,7 @@ com.instana.plugin.turbonomic:
   host: 'https://192.168.178.146'  # Turbonomic Server Host or IP address
   target: 'unit0-tenant0.instanak3s.fritz.box' # Name of the target (Instana Server) as configured in Turbonomic
   auth:
-    username: administrator  # User must have administrator, deployer, or automator authority.
-    password: passw0rd
+    username: 'administrator' # User must have administrator, deployer, or automator authority.
+    password: 'passw0rd'
 
 
