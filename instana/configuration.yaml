@@ -303,8 +303,8 @@ com.instana.plugin.host:
 
 # To allow HTTP action set 'enabled=true'. Before you enable this sensor, review the information
 # in https://www.ibm.com/docs/en/instana-observability/current?topic=actions-action-security.
-#com.instana.plugin.action.http:
-#  enabled: false
+com.instana.plugin.action.http:
+  enabled: false
 
 # To allow ansible actions, set 'enabled=true'. Before you enable this sensor, review the information
 # in https://www.ibm.com/docs/en/instana-observability/current?topic=actions-action-security. It is
@@ -328,8 +328,8 @@ com.instana.plugin.host:
 # To allow GitHub/Gitlab or Jira Issue actions, set 'enabled=true'. Before you enable this sensor,
 # review the information in https://www.ibm.com/docs/en/instana-observability/current?topic=actions-action-security.
 # It is recommended that you enable the vault sensor and use the vault for `accessToken` and `apiToken` as shown below.
-#com.instana.plugin.action.issue:
-#  enabled: false
+com.instana.plugin.action.issue:
+  enabled: false
 #  github: # optional
 #    baseUrl: <github_url> # i.e. https://api.github.com
 #    accessToken: # Github access token
