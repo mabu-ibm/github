@@ -1798,10 +1798,10 @@ com.instana.plugin.vsphere:
 #Turbonomic
 com.instana.plugin.turbonomic:
   enabled: true
-  host: 'https://192.168.178.146/'  # Turbonomic Server Host or IP address
+  host: 'https://192.168.178.146'  # Turbonomic Server Host or IP address
   target: 'unit0-tenant0.instanak3s.fritz.box' # Name of the target (Instana Server) as configured in Turbonomic
   auth:
-    username: 'observer' # User must have administrator, deployer, or automator authority.
-    password: 'observer'
+    username: 'administrator' # User must have administrator, deployer, or automator authority.
+    password: 'passw0rd'
 
 
