@@ -92,7 +92,7 @@
 com.instana.plugin.host:
   tags:
     - 'GitConfig'
-    - 'oracle'
+#    - 'oracle'
 #  filesystems:
 #    - 'server:/usr/local/pub'
 #    - 'tmpfs:/mount/point/path'
@@ -1796,13 +1796,13 @@ com.instana.plugin.vsphere:
 #      poll_rate: 10 # Poll rate in seconds.
 
 #Turbonomic
-com.instana.plugin.turbonomic:
-  enabled: true
-  host: 'https://192.168.178.146'  # Turbonomic Server Host or IP address
-  target: 'unit0-tenant0.instanak3s.fritz.box' # Name of the target (Instana Server) as configured in Turbonomic
-  auth:
-    username: 'administrator' # User must have administrator, deployer, or automator authority.
-    password: 'passw0rd'
+#com.instana.plugin.turbonomic:
+#  enabled: true
+#  host: 'https://192.168.178.146'  # Turbonomic Server Host or IP address
+#  target: 'unit0-tenant0.instanak3s.fritz.box' # Name of the target (Instana Server) as configured in Turbonomic
+#  auth:
+#    username: 'administrator' # User must have administrator, deployer, or automator authority.
+#    password: 'passw0rd'
 
 
 
