@@ -91,8 +91,8 @@
 # in mtab / df
 com.instana.plugin.host:
   tags:
-    - 'aliasname=ccm1'
-    - 'aliaslong=ccm1.i.mercedes-benz.com'
+    - 'aliasname=linux'
+    - 'aliaslong=homelab'
 #  filesystems:
 #    - 'server:/usr/local/pub'
 #    - 'tmpfs:/mount/point/path'
@@ -122,7 +122,7 @@ com.instana.plugin.host:
 # Hardware & Zone
 com.instana.plugin.generic.hardware:
   enabled: true # disabled by default
-  availability-zone: 'ELM @ Mercedes Benz'
+  availability-zone: 'homelab-dc1'
 
 # AWS Services
 # Monitoring of all AWS Service are enabled by default except for AWS XRay.
@@ -2207,13 +2207,21 @@ com.instana.tracing:
 #      poll_rate: 10 # Poll rate in seconds.
 
 #Turbonomic
-#com.instana.plugin.turbonomic:
-#  enabled: true
-#  host: '<INSERT_TURBONOMIC_SERVER_HERE>'  # Turbonomic Server Host or IP address
-#  target: '<INSERT_TURBONOMIC_TARGET_NAME>' # Name of the target (Instana Server) as configured in Turbonomic
-#  auth:
-#    username: <INSERT_USERNAME_OF_TURBONOMIC_SERVER_HERE>  # User must have administrator, deployer, or automator authority.
-#    password: <INSERT_PASSWORD_OF_TURBONOMIC_SERVER_HERE>
+com.instana.plugin.turbonomic:
+  enabled: true
+  host: '192.168.178.74'  # Turbonomic Server Host or IP address
+  target: 'unit0-tenant0.instanak3s.lab.allwaysbeginner.com' # Name of the target (Instana Server) as configured in Turbonomic
+  auth:
+    username: Administrator  # User must have administrator, deployer, or automator authority.
+    password: Test7283
+
+com.instana.plugin.cve:
+ enabled: true
+ concert:
+  base_url: 'https://concert.lab.allwaysbeginner.com'     # Available in your concert instance URL
+  instance_id: '0000-0000-0000-0000'  # Available in your concert instance URL
+  api_key: 'bWFuZnJlZDo1YmJkMjQ3MS0zZDFkLTQ3YzAtODZlZC1mMjUyZmFlNzA2OTQ='      # Concert API key
+  poll_rate: 10    # Sensor poll rate in minutes
 
 #Zabbix
 #com.instana.plugin.zabbix:
