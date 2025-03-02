@@ -2209,7 +2209,7 @@ com.instana.tracing:
 #Turbonomic
 com.instana.plugin.turbonomic:
   enabled: true
-  host: '192.168.178.74'  # Turbonomic Server Host or IP address
+  host: 'https://192.168.178.74/'  # Turbonomic Server Host or IP address
   target: 'unit0-tenant0.instanak3s.lab.allwaysbeginner.com' # Name of the target (Instana Server) as configured in Turbonomic
   auth:
     username: Administrator  # User must have administrator, deployer, or automator authority.
@@ -2218,9 +2218,9 @@ com.instana.plugin.turbonomic:
 com.instana.plugin.cve:
  enabled: true
  concert:
-  base_url: 'https://concert.lab.allwaysbeginner.com'     # Available in your concert instance URL
+  base_url: 'https://192.168.178.73:12443/core/api/v1/applications'     # Available in your concert instance URL
   instance_id: '0000-0000-0000-0000'  # Available in your concert instance URL
-  api_key: 'bWFuZnJlZDo1YmJkMjQ3MS0zZDFkLTQ3YzAtODZlZC1mMjUyZmFlNzA2OTQ='      # Concert API key
+  api_key: 'bWFuZnJlZDo5MzgyZTc1YS03YzViLTRkNTMtOTM1ZC1jYjczNzE1MjRkMDM=bWFuZnJlZDo5MzgyZTc1YS03YzViLTRkNTMtOTM1ZC1jYjczNzE1MjRkMDM='      # Concert API key
   poll_rate: 10    # Sensor poll rate in minutes
 
 #Zabbix
