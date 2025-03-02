@@ -93,6 +93,8 @@ com.instana.plugin.host:
   tags:
     - 'aliasname=linux'
     - 'aliaslong=homelab'
+    - 'GitConfig'
+#    - 'oracle'
 #  filesystems:
 #    - 'server:/usr/local/pub'
 #    - 'tmpfs:/mount/point/path'
@@ -102,28 +104,14 @@ com.instana.plugin.host:
 #  Regular expressions that identify network interfaces to include or exclude. If both are defined, exclusive regex has priority over inclusive regex.
 #  interface-inclusive-regex: '' # Regex pattern for matching network interface names to include
 #  interface-exclusive-regex: '' # Regex pattern for matching network interface names to exclude
-#  winServiceRegex: '' # Regex pattern for matching Windows services name or display name to include
-
-#File Monitoring
-#com.instana.plugin.filemonitoring:
-#  file_events:
-#    - event_intervals:
-#        - interval_1: 300 #sec
-#        - interval_2:  # sec
-#        - interval_3:  # sec
-#        - interval_4:  # sec
-#    - path: ''
-#      conditions:
-#        - ''
-#      name: ''
-#      interval: ''
-#      severity: ''
 
 # Hardware & Zone
+#com.instana.plugin.generic.hardware:
+#  enabled: true # disabled by default
+#  availability-zone: 'Datacenter A / Rack 42'
 com.instana.plugin.generic.hardware:
   enabled: true # disabled by default
   availability-zone: 'homelab-dc1'
-
 # AWS Services
 # Monitoring of all AWS Service are enabled by default except for AWS XRay.
 # Default values for cloudwatch_period are in seconds and equal to AWS defaults
@@ -134,7 +122,6 @@ com.instana.plugin.generic.hardware:
 #  include_tags:
 #  exclude_tags:
 #  include_untagged: true
-#  enable_batch_discovery: true
 
 #com.instana.plugin.aws.apigateway:
 #  enabled: false
@@ -144,13 +131,6 @@ com.instana.plugin.generic.hardware:
 #  include_untagged: true
 
 #com.instana.plugin.aws.appsync:
-#  enabled: false
-#  cloudwatch_period: 60
-#  include_tags:
-#  exclude_tags:
-#  include_untagged: true
-
-#com.instana.plugin.aws.autoscaling:
 #  enabled: false
 #  cloudwatch_period: 60
 #  include_tags:
@@ -297,20 +277,6 @@ com.instana.plugin.generic.hardware:
 #  exclude_tags:
 #  include_untagged: true
 
-#com.instana.plugin.aws.timestream:
-#  enabled: false
-#  cloudwatch_period: 60
-#  include_tags:
-#  exclude_tags:
-#  include_untagged: true
-
-#com.instana.plugin.aws.documentdb:
-#  enabled: false
-#  cloudwatch_period: 60
-#  include_tags:
-#  exclude_tags:
-#  include_untagged: true
-
 #com.instana.plugin.aws.xray:
 #  enabled: false
 
@@ -341,8 +307,8 @@ com.instana.plugin.generic.hardware:
 
 # To allow HTTP action set 'enabled=true'. Before you enable this sensor, review the information
 # in https://www.ibm.com/docs/en/instana-observability/current?topic=actions-action-security.
-#com.instana.plugin.action.http:
-#  enabled: false
+com.instana.plugin.action.http:
+  enabled: false
 
 # To allow ansible actions, set 'enabled=true'. Before you enable this sensor, review the information
 # in https://www.ibm.com/docs/en/instana-observability/current?topic=actions-action-security. It is
@@ -366,8 +332,8 @@ com.instana.plugin.generic.hardware:
 # To allow GitHub/Gitlab or Jira Issue actions, set 'enabled=true'. Before you enable this sensor,
 # review the information in https://www.ibm.com/docs/en/instana-observability/current?topic=actions-action-security.
 # It is recommended that you enable the vault sensor and use the vault for `accessToken` and `apiToken` as shown below.
-#com.instana.plugin.action.issue:
-#  enabled: false
+com.instana.plugin.action.issue:
+  enabled: false
 #  github: # optional
 #    baseUrl: <github_url> # i.e. https://api.github.com
 #    accessToken: # Github access token
@@ -417,15 +383,6 @@ com.instana.plugin.generic.hardware:
 #    - 'test-queue-1'
 #    - 'DLQ'
 
-# AppDynamics
-#com.instana.plugin.appdynamics:
-#  enabled: true
-#  endpoint: 'https://<client-instance>.saas.appdynamics.com'
-#  client_secret: 'redacted'
-#  client_name: 'redacted'
-#  account_name: '<accountname>'
-#  poll_rate: 30
-
 # Apache RocketMQ
 #com.instana.plugin.rocketmq:
 #  enabled: true
@@ -448,16 +405,12 @@ com.instana.plugin.generic.hardware:
 
 # Clickhouse
 #com.instana.plugin.clickhouse:
-#  enabled: false
 #  user: default    # the username used to access ClickHouse's HTTP interface
 #  password: root   # the password used to access ClickHouse's HTTP interface
 #  protocol: http   # 'http' or 'https'
 #  host: localhost  # the host name or IP of the ClickHouse server
 #  httpPort: 8123   # the port of the ClickHouse server
-#  tracingEnabled: false
-#  profilingEnabled: false
-#  clusterName: saas
-#  monitorTables:    # more in-depth metrics for these tables
+#  monitorTables    # more in-depth metrics for these tables
 #    - 'database.table1'
 #    - 'database.table2'
 #    - 'database.table3'
@@ -478,14 +431,6 @@ com.instana.plugin.generic.hardware:
 #com.instana.plugin.crio:
 #  stats:
 #    interval: 10 # seconds
-
-# Datadog
-#com.instana.plugin.datadog:
-#  enabled: true
-#  endpoint: 'https://api.datadoghq.com'
-#  api_key: 'redacted'
-#  application_key: 'redacted'
-#  poll_rate: 30
 
 # DB2
 #com.instana.plugin.db2:
@@ -621,14 +566,6 @@ com.instana.plugin.generic.hardware:
 #      password: '<INSERT_PASSWORD_HERE>' # User password to connect to DRBD reactor (Optional)
 #      availabilityZone: '<INSERT_AVAILABILITYZONE_HERE>' # Specify a zone for DRBD resources (Optional)
 
-# Dynatrace sensor
-#com.instana.plugin.dynatrace:
-#  enabled: true
-#  zone: '<Dynatrace management zone>' (Optional)
-#  endpoint: 'https://<host>.live.dynatrace.com'
-#  key: '<redacted>'
-#  poll_rate: 30 # How often Dynatrace API will be polled in seconds, default 30
-
 # eBPF sensor
 # # eBPF is only available on Linux hosts. Requires a 4.7 or later kernel with `debugfs` mounted.
 # # Red Hat has backported BPF to RHEL 7.6 (kernel version 3.10.0-957 or later).
@@ -725,9 +662,9 @@ com.instana.plugin.generic.hardware:
 # IBM ACE
 #com.instana.plugin.ace:
 #  enabled: true
-#  poll_rate: 60       # Default is 60 seconds, the minimum value is 20 seconds.
-#  forceRemote: false  # Force local monitoring to remote monitoring.
-#  NodesOrServers:     # Multiple Integration node instances or multiple standalone Integration Servers can be specified
+#  poll_rate: 60	# Default is 60 seconds, the minimum value is 20 seconds.
+#  forceRemote: false 	# Force local monitoring to remote monitoring.
+#  NodesOrServers:	# Multiple Integration node instances or multiple standalone Integration Servers can be specified
 #    BK1:     # Example1: Integration Node with MQTT(required)
 #      ######################################################################################################
 #      # Following Parameters are used to access ACE server's rest api service to retrieve status data, configuration data, etc.
@@ -827,16 +764,6 @@ com.instana.plugin.generic.hardware:
 #    - location_endpoint: '<INSERT_ENDPOINT_HERE>' # IBM Cloud Monitoring endpoint. For example, https://us-east.monitoring.cloud.ibm.com
 #      apikey: '<INSERT_APIKEY_HERE>' # IBM Cloud Monitoring API Key for this location.
 
-#IBMInfosphereCDC
-# com.instana.plugin.ibminfospherecdc:
-#   remote: # multiple configurations supported
-#     - host: '' # hostname or IP of IBM Infosphere CDC
-#       port: '' # port number to connect to IBM Infosphere CDC
-#       user: '' # sername to access the IBM Infosphere CDC
-#       password: '' # password to access the IBM Infosphere CDC
-#       poll_rate: 30 # default poll rate in seconds is 30
-#       availabilityZone: "" #Availabilty Zone
-
 # IBM i Series
 #com.instana.plugin.ibmiseries:
 #  enabled: true
@@ -863,13 +790,13 @@ com.instana.plugin.generic.hardware:
 #            events: 'Names of the events in comma(,) separated way' #Refer documentation for events name.
 #      user_specification: # For user inputs (Optional)
 #        activeJobs:
-#          jobs: 'comma separated list of job names. You can use * as a wild card character in any part of the job name' # example - '*/QUSER/QZDASOINIT, 311353/QLWISVR/ADMIN, 10034*/QUSER/*'
+#          jobs: 'comma separated list of job names' # example - '100345/QUSER/QZDASOINIT, 311353/QLWISVR/ADMIN2'
 #          event:
 #            identicalJobs:
 #              jobName/user: 'Provide JOB_NAME_SHORT/JOB_USER values in comma(,) separated way. Use * in user part as wild card character' # example - 'CT_AGENT/QAUTOMON,QZDASOINIT/*'
 #              threshold: 5 # Event will be triggered if jobs with same name & user in the running status is less than threshold value.
 #            runningStatus: 'Provide JobStatus/Subsystem values in comma(,) separated way. You can use * in subsystem part as wild card' # example - 'SIGW/QHTTPSVR,DSC/*,DEQW/QAUTOMON'
-#            inactiveJobs:  'Provide JOB_NAME in comma(,) separated way. You can use * as wild card character in any part of the JOB_NAME'  # example - '*/QSYS/QAUTOMON , 137640/QSYS/QBATCH , */QWEBADMIN/* , */QSYS/QAUTO*'
+#            inactiveJobs:  'Provide JOB_NAME in comma(,) separated way'  # example - '141714/QSYS/QAUTOMON , 137640/QSYS/QBATCH'
 #            enableInactiveJOBQStatus: #Allowed value 'true' or 'false'. Alert will be triggered for the inactive jobs if JOB_QUEUE_STATUS is 'RELEASED' or 'SCHEDULED' and JOB_STATUS is 'JOBQ'.
 #        messageQueue:
 #          filter: # User defined filter for Message Queue table
@@ -933,7 +860,6 @@ com.instana.plugin.generic.hardware:
 #      keystorePassword: '<INSERT_KEYSTORE_PASSWORD_HERE>' # Keystore password for TLS connection (required only when TLS is enabled for remote monitor. Optional)
 #      cipherSuite: '<INSERT_CIPHER_SUITE_HERE>' # TLS cipher suite for TLS connection (required only when TLS is enabled for remote monitor. Optional)
 #      customEventQueues: 'SYSTEM.ADMIN.PERFM.EVENT, SYSTEM.ADMIN.CHANNEL.EVENT, SYSTEM.ADMIN.QMGR.EVENT' # User defined queue names to read performance/channel/qmgr events. Separated by comma. (Optional)
-#      customEvents: 'Alias Base Queue Type Error, Bridge Stopped, Channel Auto-definition Error, Channel Blocked, Channel Conversion Error, Channel Not Activated, Channel Not Available, Channel SSL Error, Channel SSL Warning, Channel Stopped, Channel Stopped By User, Default Transmission Queue Type Error, Default Transmission Queue Usage Error, Get Inhibited, Not Authorized, Put Inhibited, Queue Depth High, Queue Full, Queue Manager Not Active, Queue Service Interval High, Queue Type Error, Remote Queue Name Error, Transmission Queue Type Error, Transmission Queue Usage Error, Unknown Alias Base Queue, Unknown Default Transmission Queue, Unknown Object Name, Unknown Remote Queue Manager, Unknown Transmission Queue' # User selected events to trigger. Separated by comma. (Optional)
 #      poll_rate: 60 # Metrics poll rate in seconds for this Queue Manager, and the minimum value is 30 seconds. (Optional)
 #    QUEUE_MANAGER_NAME_2: # If there are queue managers with the same name, it is required to append '-<host>' in the queue manager name to distinguish them.
 #      host: '<INSERT_HOST_HERE>' # Queue Manager host, required for remote monitor. Remove it for local monitor or when Instana agent is on OCP. (Optional)
@@ -949,7 +875,6 @@ com.instana.plugin.generic.hardware:
 #      keystorePassword: '<INSERT_KEYSTORE_PASSWORD_HERE>' # Keystore password for TLS connection (required only when TLS is enabled for remote monitor. Optional)
 #      cipherSuite: '<INSERT_CIPHER_SUITE_HERE>' # TLS cipher suite for TLS connection (required only when TLS is enabled for remote monitor. Optional)
 #      customEventQueues: 'SYSTEM.ADMIN.PERFM.EVENT, SYSTEM.ADMIN.CHANNEL.EVENT, SYSTEM.ADMIN.QMGR.EVENT' # User defined queue names to read performance/channel/qmgr events. Separated by comma. (Optional)
-#      customEvents: 'Alias Base Queue Type Error, Bridge Stopped, Channel Auto-definition Error, Channel Blocked, Channel Conversion Error, Channel Not Activated, Channel Not Available, Channel SSL Error, Channel SSL Warning, Channel Stopped, Channel Stopped By User, Default Transmission Queue Type Error, Default Transmission Queue Usage Error, Get Inhibited, Not Authorized, Put Inhibited, Queue Depth High, Queue Full, Queue Manager Not Active, Queue Service Interval High, Queue Type Error, Remote Queue Name Error, Transmission Queue Type Error, Transmission Queue Usage Error, Unknown Alias Base Queue, Unknown Default Transmission Queue, Unknown Object Name, Unknown Remote Queue Manager, Unknown Transmission Queue' # User selected events to trigger. Separated by comma. (Optional)
 #      poll_rate: 60 # Metrics poll rate in seconds for this Queue Manager, and the minimum value is 30 seconds. (Optional)
 
 # IBM MQ Managed File Transfer
@@ -1034,7 +959,8 @@ com.instana.plugin.generic.hardware:
 #  password: '' #default is 'user'
 
 # Kafka
-#com.instana.plugin.kafka:
+com.instana.plugin.kafka:
+   enabled: false 
 #  jmxUsername: ''
 #  jmxPassword: ''
 #  jmxPort: '' # default jmx port is 1099
@@ -1090,35 +1016,11 @@ com.instana.plugin.generic.hardware:
 #  sslKeyStorePassword: 'mysqlKsPassword'
 #  disableSslHostnameVerification: false
 
-# New Relic
-#com.instana.plugin.newrelic:
-#  enabled: true
-#  endpoint: "https://api.newrelic.com/graphql"
-#  api_user_key: redacted
-#  accountID: redacted
-#  poll_rate: 30
-
-# Nagios (tech-preview)
-#com.instana.plugin.nagios:
-#  enabled: true
-#  endpoint: <INSERT_ENDPOINT_HERE>
-#  key: <INSERT_APIKEY_HERE>
-#  poll_rate: 60
-
 # Nomad
 #com.instana.plugin.nomad:
 #  caCertificate: '' # path to CA certificate (eg. /etc/nomad/ca.crt)
 #  clientCertificate: '' # path to client certificate (eg. /etc/nomad/client.crt)
 #  clientKey: '' # path to client key (eg. /etc/nomad/client.key)
-
-#Nutanix
-#com.instana.plugin.nutanix:
-#  url: https://192.168.2.1:9440 #host with port
-#  username: <username>
-#  password: <password>
-#  type: prismcentral #or AHV
-#  enabled: true
-#  poll_rate: 20 #interval in seconds
 
 # Omegamon
 #com.instana.plugin.ibmomegamon:
@@ -1314,7 +1216,6 @@ com.instana.plugin.generic.hardware:
 #  podReadTimeout: 2500                       # discovery TCP read timeout in ms used during discovery request (optional default is 2500ms)
 #  poll_rate: 15                              # Global polling interval in seconds (optional default is 1s)
 #  prometheusAnnotations: strict              # use prometheus annotations as defined, no metric source is required
-#  usePodInfoInUrl: false                     # use the pod information to uniquely identify prometheus endpoints (optional default is false)
 #  customMetricSources:                       # list metric sources
 #   # Kubernetes configuration(s)
 #  - url: '/prometheus/endpoints/metrics'     # metrics endpoint, the IP and port are auto-discovered
@@ -1401,67 +1302,16 @@ com.instana.plugin.generic.hardware:
 
 # Sap HANA
 #com.instana.plugin.saphana:
-#  local: # Local monitoring configuration
-#    singleContainer:
+#  singleContainer:
+#    user: '' #default is 'SYSTEM'
+#    password: ''
+#  multiContainer:
+#    DATABASE_NAME_1: #example 'HXE'
 #      user: '' #default is 'SYSTEM'
 #      password: ''
-#    multiContainer:
-#      DATABASE_NAME_1: #example 'HXE'
-#        user: '' #default is 'SYSTEM'
-#        password: ''
-#      DATABASE_NAME_2:
-#        user: '' #default is 'SYSTEM'
-#        password: ''
-#  # Remote monitoring configuration
-#  remote: # multiple database configurations are supported
-#    - host: 'remote.host-1.com'
-#      port: '' #sql port
-#      databaseName: '' #example 'HXE'
-#      user: 'user1'
-#      password: 'password'
-#    - host: 'remote.host-2.com'
-#      port: '' #sql port
-#      databaseName: '' #example 'HXE'
-#      user: 'user2'
-#      password: 'password'
-
-# Microsoft SCOM
-#com.instana.plugin.scom:
-#  enabled: true
-#  pollRate: 30
-#  endpoint: '' # Example: http://<hostname>/OperationsManager
-#  username: ''
-#  password: ''
-#  kerberos_realm: '' # Kerberos realm name
-#  kdc: '' # Hostname of the Kerberos KDC
-
-# Snowflake
-#com.instana.plugin.snowflake:
-#  enabled: false
-#  accounts:
-#    - account: '' # account ID
-#      url: '' # account url
-#      user: ''
+#    DATABASE_NAME_2:
+#      user: '' #default is 'SYSTEM'
 #      password: ''
-#      role: ''
-#      warehouse: '' # default warehouse to run queries to extract metrics
-#      poll_rate:  # default poll_rate in seconds is 3600
-#      availabilityZone: ''
-
-# SolarWinds
-#com.instana.plugin.solarwinds:
-#  enabled: true
-#  endpoint: 'https://<solarwinds.host.com>:17774'
-#  username: 'redacted'
-#  password: 'redacted'
-#  poll_rate: 30
-
-# Splunk Observability
-#com.instana.plugin.splunk:
-#  enabled: true
-#  endpoint: 'https://api.us1.signalfx.com'
-#  api_token: 'redacted'
-#  poll_rate: 30
 
 # SpringBoot
 #com.instana.plugin.springboot:
@@ -1477,7 +1327,7 @@ com.instana.plugin.generic.hardware:
 #  bind-ip: "0.0.0.0" # all ips by default
 #  flush-interval: 10 # in seconds
 
-# SAP SQL Anywhere / Sybase SQL Anywhere
+# Sybase SQL Anywhere
 #com.instana.plugin.sybase:
 #  servers:
 #    SERVER_NAME_1: #example 'server1'
@@ -1494,8 +1344,8 @@ com.instana.plugin.generic.hardware:
 #  clientCertificate: '/path/to/tls.crt' # path to X.509 client certificate file if HTTPS is enabled for PoP Controller
 #  clientKey: '/path/to/tls.key' # path to client private key file if HTTPS is enabled for PoP Controller
 
-# Tibco ActiveSpaces FTL server configurations
-#com.instana.plugin.tibcoas:
+# Tibco ActiveSpaces Node
+#com.instana.plugin.tibcoas.node:
 #  applicationName: '' # application name for ftl server connection. Default is: 'default'
 #  user: '' # username for the ftl server.
 #  password: '' # password for the ftl server.
@@ -1523,12 +1373,12 @@ com.instana.plugin.generic.hardware:
 #  enabled: true
 
 # VMware vSphere
-#com.instana.plugin.vsphere:
-#  host: https://<INSERT_HOST_HERE>/sdk
-#  username: <INSERT_USERNAME_HERE>
-#  password: <INSERT_PASSWORD_HERE>
-#  enabled: true
-#  poll_rate: 20 # metrics poll rate in seconds
+com.instana.plugin.vsphere:
+  host: https://192.168.178.181/sdk
+  username: 'administrator@vsphere.local'
+  password: '$T7283esT!'
+  enabled: true
+  poll_rate: 20 # metrics poll rate in seconds
 
 #ZHMC
 #com.instana.plugin.zhmc:
@@ -1545,8 +1395,8 @@ com.instana.plugin.generic.hardware:
 #      socketTimeout: 50 # It is socket read time out. Default is 50 seconds.
 
 # Java & Custom JMX
-com.instana.plugin.java:
-  jmx:
+#com.instana.plugin.java:
+#  jmx:
 #    # JMX is NOT hot-reloaded and needs to be set before a JVM is discovered.
 #    # Supported attribute types are Number and Boolean
 #    # delta calculation is only supported for Number
@@ -1565,265 +1415,12 @@ com.instana.plugin.java:
 #    enabled: true
 #    limit: 200
 
-    - object_name: 'WebSphere:type=JvmStats'
-      metrics:
-        - attributes: 'FreeMemory'
-          type: 'absolute' # absolute will report the value as-is
-        - attributes: 'Heap'
-          type: 'absolute' # absolute will report the value as-is
-        - attributes: 'UsedMemory'
-          type: 'absolute' # absolute will report the value as-is
-
-    - object_name: 'WebSphere:type=ThreadPoolStats,name=Default Executor'
-      metrics:
-        - attributes: 'ActiveThreads'
-          type: 'absolute' # absolute will report the value as-is
-        - attributes: 'PoolSize'
-          type: 'absolute' # absolute will report the value as-is
-          
-    - object_name: 'java.lang:type=Memory'
-      metrics:
-        - attributes: 'CurrentGCThreads'
-          type: 'absolute' # absolute will report the value as-is
-        - attributes: 'MaxHeapSize'
-          type: 'absolute' # absolute will report the value as-is
-
-
-    - object_name: 'java.lang:type=OperatingSystem'
-      metrics:
-        - attributes: 'FreePhysicalMemorySize'
-          type: 'absolute' # absolute will report the value as-is
-        - attributes: 'TotalPhysicalMemory'
-          type: 'absolute' # absolute will report the value as-is
-        - attributes: 'FreeSwapSpaceSize'
-          type: 'absolute' # absolute will report the value as-is
-        - attributes: 'TotalSwapSpaceSize'
-          type: 'absolute' # absolute will report the value as-is
-        - attributes: 'AvailableProcessors'
-          type: 'absolute' # absolute will report the value as-is
-        - attributes: 'SystemCpuLoad'
-          type: 'absolute' # absolute will report the value as-is
-        - attributes: 'ProcessCpuLoad'
-          type: 'absolute' # absolute will report the value as-is
-        - attributes: 'SystemLoadAverage'
-          type: 'absolute' # MBSE
-        - attributes: 'ProcessPhysicalMemorySize'
-          type: 'absolute' # MBSE
-        - attributes: 'OpenFileDescriptorCount'
-          type: 'absolute' # MBSE
-        - attributes: 'MaxFileDescriptorCount'
-          type: 'absolute' # MBSE
-
-
-  # MBSE 
-
-    - object_name: 'java.lang:type=Runtime'
-      metrics:
-        - attributes: 'Uptime'
-          type: 'absolute' # JVM updatime
-
-
-#### com.ibm.team.webservices
-
-    - object_name: 'com.ibm.team.foundation.webservices:name=ccm1,type=webServicesSummaryMetrics,facet=elapsed time in seconds'
-      metrics:
-        - attributes: 'averageOverInterval'
-          type: 'absolute' # JVM updatime
-
-    - object_name: 'com.ibm.team.foundation.counters:name=ccm1,type=counterMetrics,group=web service,facet=elapsed time in seconds,counterName=*'
-      metrics:
-        - attributes: 'averageOverInterval'
-          type: 'absolute' # JVM updatime#
-        - attributes: 'countOverInterval'
-          type: 'absolute' # JVM updatime# 
-        - attributes: 'maxOverInterval'
-          type: 'absolute
-
-    - object_name: 'com.ibm.team.foundation.jfsindexing:name=ccm1,type=jfsIndexDataMetrics,indexname=*'
-      metrics:
-        - attributes: 'indexBacklog'
-          type: 'absolute' # JVM updatime#
-
-    - object_name: 'com.ibm.team.foundation.counters:name=ccm1,type=counterMetrics,group=scenarios,facet=elapsed time in milliseconds,counterName=*'
-      metrics:
-        - attributes: 'average'
-          type: 'absolute' # JVM updatime#
-        - attributes: 'averageOverInterval'
-          type: 'absolute' # JVM updatime#
-        - attributes: 'count'
-          type: 'absolute' # JVM updatime#
-        - attributes: 'countOverInterval'
-          type: 'absolute' # JVM updatime#
-        - attributes: 'total'
-          type: 'absolute' # JVM updatime#
-        - attributes: 'totalOverInterval'
-          type: 'absolute' # JVM updatime#
-
-    - object_name: 'com.ibm.team.foundation.projectarea:name=ccm1,type=projectSummaryMetrics'
-      metrics:
-        - attributes: 'totalCount'
-          type: 'absolute' # JVM updatime#
-        - attributes: 'archivedCount'
-          type: 'absolute' # JVM updatime#
-        - attributes: 'unarchivedCount'
-          type: 'absolute' # JVM updatime#
-
-    - object_name: 'com.ibm.team.foundation.counters:name=ccm1,type=counterMetrics,group=activeServices,facet=elapsed time in seconds,counterName=*'
-      metrics:
-        - attributes: 'totalOverInterval'
-          type: 'absolute' # JVM updatime#
-
-    - object_name: 'com.ibm.team.foundation.counters:name=ccm1,type=counterMetrics,group=ChangeSetService,facet=Elapsed time in milliseconds*,counterName=*'
-      metrics:
-        - attributes: 'averageOverInterval'
-          type: 'absolute' # JVM updatime#
-
-    - object_name: 'com.ibm.team.foundation.counters:name=ccm1,type=counterMetrics,group=DeliveryService,facet=Elapsed time in milliseconds*,counterName=*'
-      metrics:
-        - attributes: 'averageOverInterval'
-          type: 'absolute' # JVM updatime#
-
-    - object_name: 'com.ibm.team.foundation.counters:name=ccm1,type=counterMetrics,group=Configuration Management Service,facet=Elapsed time in milliseconds*,counterName=*'
-      metrics:
-        - attributes: 'averageOverInterval'
-          type: 'absolute' # JVM updatime#
-
-## diagnostic 
-
-    - object_name: 'com.ibm.team.foundation.diagnostic:name=ccm1,type=diagnosticMetrics,testId=*'
-      metrics:
-        - attributes: 'duration'
-          type: 'absolute' # JVM updatime#
-
-####
-
-    - object_name: 'com.ibm.team.foundation.serveractivity:name=ccm1,type=serverActivitySummaryMetrics'
-      metrics:
-        - attributes: 'activeUsersCount'
-          type: 'absolute' # absolute will report the value as-is
-        - attributes: 'activeServicesCount'
-          type: 'absolute'
-    
-
-    - object_name: 'com.ibm.team.foundation.activeservices:name=ccm1,type=activeServicesSummaryMetrics'
-      metrics:
-        - attributes: 'concurrentUsers'
-          type: 'absolute' # absolute will report the value as-is
-        - attributes: 'longestDuration'
-          type: 'absolute'
-        - attributes: 'cpuRatio'
-          type: 'absolute'
-        - attributes: 'totalCount'
-          type: 'absolute'
-        - attributes: 'countExceedingThresholdDuration'
-          type: 'absolute'
-
-    - object_name: 'com.ibm.team.foundation.activeservices:name=ccm1,type=activeServicesMetrics,serviceName=*'
-      metrics:
-        - attributes: 'duration'
-          type: 'absolute'
-        - attributes: 'serviceId'
-          type: 'absolute'
-        - attributes: 'threadId'
-          type: 'absolute'
-        - attributes: 'startTime'
-          type: 'absolute'
-
-
-#    - object_name: 'com.ibm.rdm.metrics:name=TotalNumberOfConfigurations,type=cm'
-#      metrics:
-#        - attributes: 'Value'
-#          type: 'absolute' 
-
-# Database specific beans
-
-    - object_name: 'com.ibm.team.foundation.sqlactivity:name=ccm1,type=sqlActivitySummaryMetrics,sqlStmtType=read'
-      metrics:
-        - attributes: 'sqlAverageTime'
-          type: 'absolute' 
-
-    - object_name: 'com.ibm.team.foundation.sqlactivity:name=ccm1,type=sqlActivitySummaryMetrics,sqlStmtType=write'
-      metrics:
-        - attributes: 'sqlAverageTime'
-          type: 'absolute'
-
-    - object_name: 'com.ibm.team.foundation.sqlactivity:name=ccm1,type=sqlActivitySummaryMetrics,sqlStmtType=other'
-      metrics:
-        - attributes: 'sqlAverageTime'
-          type: 'absolute'
-
-# counters
-        
-    - object_name: 'com.ibm.team.foundation.counters:name=ccm1,type=counterMetrics,group=resource usage,facet=queue length,counterName=JDBC connection pool'
-      metrics:
-        - attributes: 'value'
-          type: 'absolute'
-        - attributes: 'poolSize'
-          type: 'absolute'
-
-
-    - object_name: 'com.ibm.team.foundation.counters:name=ccm1,type=counterMetrics,group=resource usage,facet=active connections,counterName=JDBC connection pool'
-      metrics:
-        - attributes: 'value'
-          type: 'absolute'
-        - attribute: 'poolSize'
-          type: 'absolute'
-
-
-    - object_name: 'com.ibm.team.foundation.counters:name=ccm1,type=counterMetrics,group=resource usage,facet=usage percentage,counterName=JDBC connection pool'
-      metrics:
-        - attributes: 'averageOverInterval'
-          type: 'absolute'
-
-    - object_name: 'com.ibm.team.foundation.counters:name=ccm1,type=counterMetrics,group=resource usage,facet=queue length,counterName=RDB mediator pool'
-      metrics:
-        - attributes: 'value'
-          type: 'absolute'
-        - attribute: 'poolSize'
-          type: 'absolute'
-
-    - object_name: 'com.ibm.team.foundation.counters:name=ccm1,type=counterMetrics,group=resource usage,facet=resource usage,counterName=RDB mediator pool'
-      metrics:
-        - attributes: 'value'
-          type: 'absolute'
-        - attribute: 'poolSize'
-          type: 'absolute'
-
-    - object_name: 'com.ibm.team.foundation.counters:name=ccm1,type=counterMetrics,group=resource usage,facet=active connections,counterName=RDB mediator pool'
-      metrics:
-        - attributes: 'value'
-          type: 'absolute'
-        - attribute: 'poolSize'
-          type: 'absolute'
-
-    - object_name: 'com.ibm.team.foundation.counters:name=ccm1,type=counterMetrics,group=resource usage,facet=usage percentage,counterName=RDB mediator pool'
-      metrics:
-        - attributes: 'averageOverInterval'
-          type: 'absolute'
-
-    - object_name: 'com.ibm.team.foundation.scenarios:name=ccm1,type=expensiveScenarioDetailsMetrics,scenarioNameAndId=*'
-      metrics:
-        - attributes: 'duration'
-          type: 'absolute' # delta will report the change to the previous second
-        - attributes: 'isActive'
-          type: 'boolean'
-
-
-# artifact specific mbeans showing total number of different repository artifacts (only for RM)
-
-    - object_name: 'com.ibm.rdm.metrics:name=TotalNumberOf*,type=*'
-      metrics: 
-        - attributes : 'Value'
-          type: 'absolute'
-
-
 # General Tracing Settings
-com.instana.tracing:
-  extra-http-headers:
+#com.instana.tracing:
+#  extra-http-headers:
 #    # List of extra headers that should be captured by Instana.
 #    # Will be matched using case-insensitive match.
-    - 'X-Forwarded-For'
-    - 'user-agent' 
+#    - 'x-loadtest-id'
 
 # Java Tracing
 #com.instana.plugin.javatrace:
@@ -1847,8 +1444,8 @@ com.instana.tracing:
 #        - 'com.instana.frontend'
 
 # OpenTelemetry Collector
-#com.instana.plugin.opentelemetry:
-#  enabled: true
+com.instana.plugin.opentelemetry:
+  enabled: true
 
 # PHP Tracing
 #com.instana.plugin.php:
@@ -1922,6 +1519,29 @@ com.instana.tracing:
 #  pcp_warn_limit: 150
 #  pcp_stop_limit: 250
 
+#com.instana.plugin.python:
+#  # Python AutoTrace will automatically find and instrument Python processes.
+#  # This is supported on Linux 64bit Python processes.
+#  autotrace:
+#    # Valid values: true, false (true by default, when not set)
+#    enabled: false
+#
+#    # The AutoTrace includes list is used to identify python processes.  It is applied
+#    # _before_ the excludes list to get a list of potential candidate processes.  The includes
+#    # list is used to create a list of processes that contain the following strings in
+#    # their command line.  Items specified here will _override_ the defaults.
+#    includes:
+#      - 'python'
+#      - 'uwsgi'
+#
+#    # The AutoTrace excludes list is used to identify processes to ignore.  It is applied
+#    # _after_ the includes list.  Any processes that have the following strings in their
+#    # command line will be ignored.  Items specified here will be added to the built
+#    # in defaults.
+#    excludes:
+#      - 'pipenv'
+#      - 'setup.py'
+
 #com.instana.plugin.azure:
 #  enabled: true
 #  # Subscription & Tenant ID
@@ -1947,13 +1567,6 @@ com.instana.tracing:
 
 #com.instana.plugin.azure.managedhsm:
 #  enabled: true # Enabled (true) by default. Valid values: true, false
-#  include_tags: # Comma separated list of tags in key:value format (e.g. env:prod,env:staging)
-#  exclude_tags: # Comma separated list of tags in key:value format (e.g. env:dev,env:test)
-#  include_resource_groups: # Comma separated list of resource groups (e.g. rg_prod,rg_staging)
-#  exclude_resource_groups: # Comma separated list of resource groups (e.g. rg_dev,rg_test)
-
-#com.instana.plugin.azure.applicationgateway:
-#  enabled: false # Enabled (true) by default. Valid values: true, false
 #  include_tags: # Comma separated list of tags in key:value format (e.g. env:prod,env:staging)
 #  exclude_tags: # Comma separated list of tags in key:value format (e.g. env:dev,env:test)
 #  include_resource_groups: # Comma separated list of resource groups (e.g. rg_prod,rg_staging)
@@ -1992,20 +1605,6 @@ com.instana.tracing:
 
 
 #com.instana.plugin.azure.datafactory:
-#  enabled: false # Enabled (true) by default. Valid values: true, false
-#  include_tags: # Comma separated list of tags in key:value format (e.g. env:prod,env:staging)
-#  exclude_tags: # Comma separated list of tags in key:value format (e.g. env:dev,env:test)
-#  include_resource_groups: # Comma separated list of resource groups (e.g. rg_prod,rg_staging)
-#  exclude_resource_groups: # Comma separated list of resource groups (e.g. rg_dev,rg_test)
-
-#com.instana.plugin.azure.loadbalancer:
-#  enabled: false # Enabled (true) by default. Valid values: true, false
-#  include_tags: # Comma separated list of tags in key:value format (e.g. env:prod,env:staging)
-#  exclude_tags: # Comma separated list of tags in key:value format (e.g. env:dev,env:test)
-#  include_resource_groups: # Comma separated list of resource groups (e.g. rg_prod,rg_staging)
-#  exclude_resource_groups: # Comma separated list of resource groups (e.g. rg_dev,rg_test)
-
-#com.instana.plugin.azure.signalr:
 #  enabled: false # Enabled (true) by default. Valid values: true, false
 #  include_tags: # Comma separated list of tags in key:value format (e.g. env:prod,env:staging)
 #  exclude_tags: # Comma separated list of tags in key:value format (e.g. env:dev,env:test)
@@ -2092,20 +1691,16 @@ com.instana.tracing:
 
 #Kong API Gateway
 #com.instana.plugin.kong:
-#  enabled: false # To enable the sensor, set its value to ‘true’.
-#  dataset_size: 10 # Maximum number of rows shown in tables related to services or routes.
-#  disabled_metrics: 'TOTAL_HTTP_REQUESTS,BANDWIDTH_UTILISATION,KONG_LATENCY,UPSTREAM_LATENCY,REQUEST_LATENCY' # Comma-separated list of metrics to be disabled. Remove these metrics to re-enable monitoring. Refer to the documentation for the complete list.
-#  status_code_group: '2xx,3xx,4xx,5xx'  # Comma-separated list of status codes to be monitored.
-#  remote: # Multiple remote configurations can be specified.
+#  remote: # Multiple configurations can be specified
 #    - host: '' # Kong Server Host or IP address.
-#      port: '' # Admin api port (default is 8444). In case of basic authentication, it is a proxy port.
-#      availabilityZone: '' # default is 'KongAZ'.
-#      poll_rate: 30 # Poll rate in seconds (minimum 30 seconds).
-#      protocol: 'https' # Protocol to access Kong Admin API.  Valid values: [‘https’ or ‘http’]. Default: ‘https’.
-#      username: ''  # Optional. Only for basic authentication otherwise leave it commented.
-#      password: '' # Optional. Only for basic authentication otherwise leave it commented.
-#      admin_api_route_path: '' # Optional. Only for basic authentication otherwise leave it commented.
-#      admin_token: '' # Optional. Only for Token based authentication otherwise leave it commented.
+#      port: '' # Admin api port(default is 8444).In case of basic authentication,it is a proxy port.
+#      availabilityZone: '' # default is 'KongAZ'
+#      poll_rate: 30 # Poll rate in seconds. It can not be less than 30 seconds.
+#      protocol: 'https' # ['https' or 'http']. Default is 'https'. Protocol to access Kong Admin API.
+#      username: ''  # Optional.Only for basic authentication otherwise keep it commented.
+#      password: '' # Optional.Only for basic authentication otherwise keep it commented.
+#      admin_api_route_path: '' # Optional.Only for basic authentication otherwise keep it commented.
+#      admin_token: '' # Optional.Only for Token based authentication otherwise keep it commented.
 
 #Oracle Tuxedo
 #com.instana.plugin.tuxedo:
@@ -2151,7 +1746,6 @@ com.instana.tracing:
 #    jsAgentUrl: 'https://eum.instana.io/eum.min.js' # EUM JavaScript agent download URL.
 #    reportingUrl: <reportingUrl>                    # The URL to which to send website monitoring data to.
 #    trackSessions: true                             # Indicates whether to enable session tracking, default is true.
-#    autoPageDetection: true                         # Indicates whether to enable automatic page detection for single-page-application, default is true.
 #    #######################################################################################################
 #    # Following parameters are used to configure each monitored website.
 #    # Optional parameters are commented out by default. Remove the hashtag (#) when needed.
@@ -2163,23 +1757,22 @@ com.instana.tracing:
 #        #reportingUrl: <reportingUrl>    # The URL to which to send website monitoring data to. Overwrites upper-level setting.
 #        #jsAgentUrl: 'https://eum.instana.io/eum.min.js' # JavaScript agent download URL. Overwrites upper-level setting.
 #        #trackSessions: true             # Indicates whether to enable session tracking, default is true. Overwrites upper-level setting.
-#        #autoPageDetection: true         # Indicates whether to enable automatic page detection for single-page-application, default is true. Overwrites upper-level setting.
 #        #mode: 'regular'                 # Mode for monitoring data transmission, default is 'regular'.
 #                                         # Available mode is 'regular'.
 #        selector:                        # List of match expressions to filter requests.
 #          matchExpressions:              # When all match expressions are evaluated to true, the request is monitored.
 #                                         # At least one match expression with the key of the 'url' catalog must be defined.
-#            - key: 'url/path'            # Key specified in the <catalog>/<resource> format.
+#            - key: 'url/hostname'        # Key specified in the <catalog>/<resource> format.
 #                                         # Available catalogs in the key include 'url' for request filtering plus
 #                                         #  'container' and 'k8s' for Web Server infrastructure filtering.
 #                                         # Available keys:
 #                                         #  'url/hostname', 'url/path', and 'url/filename'
 #                                         #  'container/name' and 'container/imagename'
 #                                         #  'k8s/namespace', 'k8s/podname', and 'k8s/containername'
-#              operator: 'StartWith'      # Match expression operators: 'Contains', 'ContainsIgnoreCase', 'Equals',
+#              operator: 'Equals'         # Match expression operators: 'Contains', 'ContainsIgnoreCase', 'Equals',
 #                                         #  'EqualsIgnoreCase', 'StartWith', and 'StartWithIgnoreCase'.
 #              values:                    # List of match expression values.
-#                - '/'
+#                - 'example.com'
 
 #ContainerD
 #com.instana.plugin.containerd:
@@ -2205,7 +1798,6 @@ com.instana.tracing:
 #      clientSecret: '' # downloaded clientSecret from tool-kit
 #      availabilityZone: 'API-Connect' # default is 'API-Connect'
 #      poll_rate: 10 # Poll rate in seconds.
-
 #Turbonomic
 com.instana.plugin.turbonomic:
   enabled: true
@@ -2223,9 +1815,7 @@ com.instana.plugin.cve:
   api_key: 'bWFuZnJlZDo5MzgyZTc1YS03YzViLTRkNTMtOTM1ZC1jYjczNzE1MjRkMDM=bWFuZnJlZDo5MzgyZTc1YS03YzViLTRkNTMtOTM1ZC1jYjczNzE1MjRkMDM='      # Concert API key
   poll_rate: 10    # Sensor poll rate in minutes
 
-#Zabbix
-#com.instana.plugin.zabbix:
-#  enabled: true
-#  endpoint: 'http://<hostname>/zabbix/api_jsonrpc.php'
-#  token: 'redacted'
-#  poll_rate: 30  # In seconds
+
+
+
+
