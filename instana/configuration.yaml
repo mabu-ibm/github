@@ -56,6 +56,9 @@
 #       secret_key:
 #        path: <secret-id> # The id of the Secret within the IBM Secrets Manager, (e.g. cc32688d-89c0-6fa8-c0b4-6cc88c232e66)
 #        key: <kv-key-entry> # The Key inside the Secret Object of type KV (e.g. login)
+com.instana.agent:
+  validation:
+    validateCerts: false
 
 # Secrets
 # To filter sensitive data from collection by the agent, all sensors respect
@@ -1810,9 +1813,9 @@ com.instana.plugin.turbonomic:
 com.instana.plugin.cve:
  enabled: true
  concert:
-  base_url: 'https://192.168.178.73:12443/core/api/v1/applications'     # Available in your concert instance URL
+  base_url: 'https://concert.lab.allwaysbeginner.com:12443/core/api/v1/applications'     # Available in your concert instance URL
   instance_id: '0000-0000-0000-0000'  # Available in your concert instance URL
-  api_key: 'bWFuZnJlZDo5MzgyZTc1YS03YzViLTRkNTMtOTM1ZC1jYjczNzE1MjRkMDM=bWFuZnJlZDo5MzgyZTc1YS03YzViLTRkNTMtOTM1ZC1jYjczNzE1MjRkMDM='      # Concert API key
+  api_key: 'bWFuZnJlZDo5MzgyZTc1YS03YzViLTRkNTMtOTM1ZC1jYjczNzE1MjRkMDM='      # Concert API key
   poll_rate: 10    # Sensor poll rate in minutes
 
 
