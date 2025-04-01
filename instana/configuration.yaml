@@ -1813,7 +1813,7 @@ com.instana.plugin.turbonomic:
 com.instana.plugin.cve:
  enabled: true
  concert:
-  base_url: 'https://concert:12443/core/api/v1/applications'    # Available in your concert instance URL
+  base_url: 'https://concert:12443'    # Available in your concert instance URL
   instance_id: '0000-0000-0000-0000'  # Available in your concert instance URL
   api_key: 'aWJtY29uY2VydDo4NGI3MWI0NC1jMTk5LTQzYjEtYjQ5My05MmYzODE0ZjQyNGM='      # Concert API key
   poll_rate: 10    # Sensor poll rate in minutes
