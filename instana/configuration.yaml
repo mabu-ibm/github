@@ -572,8 +572,8 @@ com.instana.plugin.action.issue:
 # eBPF sensor
 # # eBPF is only available on Linux hosts. Requires a 4.7 or later kernel with `debugfs` mounted.
 # # Red Hat has backported BPF to RHEL 7.6 (kernel version 3.10.0-957 or later).
-#com.instana.plugin.ebpf:
-#  enabled: true
+com.instana.plugin.ebpf:
+  enabled: true
 
 # ETCD
 #com.instana.plugin.etcd:
@@ -936,15 +936,16 @@ com.instana.plugin.action.issue:
 # only the execution of a single command should be monitored. In this case use
 # arguments to specify any argument that should cause a process to be monitored.
 # Set env_vars_enabled as false will globally disable collection for environment variables.
-#com.instana.plugin.process:
-#  env_vars_enabled: true
-#  processes:
-#    - 'sshd'
-#    - 'slapd'
-#  arguments:
-#    - '/opt/script.sh'
-#  services:
-#    - 'nginx'
+com.instana.plugin.process:
+  env_vars_enabled: true
+  processes:
+    - 'sshd'
+    - 'slapd'
+    - 'python'
+  arguments:
+    - '/opt/script.sh'
+  services:
+    - 'nginx'
 #    - 'windows-service'
 
 # JBoss AS:
