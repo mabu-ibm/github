@@ -1822,7 +1822,7 @@ com.instana.plugin.cve:
 com.instana.plugin.ibmopenstack:
   enabled: true
   remote:
-    - host: 'openstack.lab.allwaysbeginner.com/openstack-keystone/v3'
+    - host: 'openstack.lab.allwaysbeginner.com'
       port: '443'
       user: 'admin'
       password: '6btNzAPK39LE'
