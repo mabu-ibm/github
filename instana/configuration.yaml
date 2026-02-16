@@ -1822,7 +1822,7 @@ com.instana.plugin.cve:
 com.instana.plugin.ibmopenstack:
   enabled: true
   remote:
-    - host: '192.168.178.195'
+    - host: '192.168.178.195/openstack-keystone'
       port: '80'
       user: 'admin'
       password: '6btNzAPK39LE'
