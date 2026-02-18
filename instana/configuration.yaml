@@ -1814,9 +1814,10 @@ com.instana.plugin.turbonomic:
 com.instana.plugin.cve:
  enabled: true
  concert:
-  base_url: 'https://concert.lab.allwaysbeginner.com:12443/core/api'    # Available in your concert instance URL
+  #base_url: 'https://concert.lab.allwaysbeginner.com:12443/core/api'    # Available in your concert instance URL
+  base_url: 'https://concert1.lab.allwaysbeginner.com:12443'  
   instance_id: '0000-0000-0000-0000'  # Available in your concert instance URL
-  api_key: 'bWFuZnJlZDoyOGFiMzUxOS1lYTBkLTRiOGMtYTJlZC1mOTAxNmM2Nzg3YTE='      # Concert API key
+  api_key: 'bWFuZnJlZDoyMjg4ZWU5Ny1jYzUzLTQxZTYtOGQ1OC1mN2M0MDc5MTlmOGQ='      # Concert API key
   poll_rate: 10    # Sensor poll rate in minutes
 
 com.instana.plugin.ibmopenstack:
