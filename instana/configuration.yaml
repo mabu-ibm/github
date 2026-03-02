@@ -1827,7 +1827,7 @@ com.instana.plugin.ibmopenstack:
       port: '443'
       user: 'admin'
       password: '6btNzAPK39LE'
-      project: 'admin'
+      project: 'admin_domain'
       poll_rate: 15
 
 
