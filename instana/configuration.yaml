@@ -1830,5 +1830,8 @@ com.instana.plugin.ibmopenstack:
       project: 'admin_domain'
       poll_rate: 15
 
+com.instana.plugin.openstack.nova:
+ enabled: false
+
 
 
