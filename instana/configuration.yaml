@@ -1831,7 +1831,7 @@ com.instana.plugin.ibmopenstack:
       poll_rate: 15
 
 com.instana.plugin.openstack.nova:
- enabled: false
+  enabled: false
 
 
 
