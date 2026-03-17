@@ -1164,7 +1164,8 @@ com.instana.plugin.kafka:
 #  interval: 5 # seconds
 
 # PostgreSQL
-#com.instana.plugin.postgresql:
+com.instana.plugin.postgresql:
+   enabled: false
 #  user: ''
 #  password: ''
 #  database: '' # by default PostgreSQL will use 'user' as database to connect to.
