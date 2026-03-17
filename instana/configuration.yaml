@@ -1812,14 +1812,14 @@ com.instana.plugin.turbonomic:
     username: Administrator  # User must have administrator, deployer, or automator authority.
     password: Test7283
 
-com.instana.plugin.cve:
- enabled: true
- concert:
+#com.instana.plugin.cve:
+# enabled: true
+# concert:
   #base_url: 'https://concert.lab.allwaysbeginner.com:12443/core/api'    # Available in your concert instance URL
-  base_url: 'https://concert1.lab.allwaysbeginner.com:12443'  
-  instance_id: '0000-0000-0000-0000'  # Available in your concert instance URL
-  api_key: 'bWFuZnJlZDoxOWNhYzg0NC01MDIxLTRiNDgtYjJiYi1kNDBhYTAwMDMzMzA='      # Concert API key
-  poll_rate: 10    # Sensor poll rate in minutes
+#  base_url: 'https://concert1.lab.allwaysbeginner.com:12443'  
+#  instance_id: '0000-0000-0000-0000'  # Available in your concert instance URL
+#  api_key: 'bWFuZnJlZDoxOWNhYzg0NC01MDIxLTRiNDgtYjJiYi1kNDBhYTAwMDMzMzA='      # Concert API key
+#  poll_rate: 10    # Sensor poll rate in minutes
 
 com.instana.plugin.openstack.nova:
   enabled: false
