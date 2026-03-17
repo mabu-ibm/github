@@ -335,8 +335,8 @@ com.instana.plugin.action.http:
 # To allow GitHub/Gitlab or Jira Issue actions, set 'enabled=true'. Before you enable this sensor,
 # review the information in https://www.ibm.com/docs/en/instana-observability/current?topic=actions-action-security.
 # It is recommended that you enable the vault sensor and use the vault for `accessToken` and `apiToken` as shown below.
-com.instana.plugin.action.issue:
-  enabled: false
+#com.instana.plugin.action.issue:
+#  enabled: false
 #  github: # optional
 #    baseUrl: <github_url> # i.e. https://api.github.com
 #    accessToken: # Github access token
@@ -572,8 +572,8 @@ com.instana.plugin.action.issue:
 # eBPF sensor
 # # eBPF is only available on Linux hosts. Requires a 4.7 or later kernel with `debugfs` mounted.
 # # Red Hat has backported BPF to RHEL 7.6 (kernel version 3.10.0-957 or later).
-com.instana.plugin.ebpf:
-  enabled: true
+#com.instana.plugin.ebpf:
+#  enabled: true
 
 # ETCD
 #com.instana.plugin.etcd:
@@ -936,16 +936,16 @@ com.instana.plugin.ebpf:
 # only the execution of a single command should be monitored. In this case use
 # arguments to specify any argument that should cause a process to be monitored.
 # Set env_vars_enabled as false will globally disable collection for environment variables.
-com.instana.plugin.process:
-  env_vars_enabled: true
-  processes:
-    - 'sshd'
-    - 'slapd'
-    - 'python'
-  arguments:
-    - '/opt/script.sh'
-  services:
-    - 'nginx'
+#com.instana.plugin.process:
+#  env_vars_enabled: true
+#  processes:
+#    - 'sshd'
+#    - 'slapd'
+#    - 'python'
+#  arguments:
+#    - '/opt/script.sh'
+#  services:
+#    - 'nginx'
 #    - 'windows-service'
 
 # JBoss AS:
@@ -963,8 +963,8 @@ com.instana.plugin.process:
 #  password: '' #default is 'user'
 
 # Kafka
-com.instana.plugin.kafka:
-   enabled: false 
+#com.instana.plugin.kafka:
+#   enabled: false 
 #  jmxUsername: ''
 #  jmxPassword: ''
 #  jmxPort: '' # default jmx port is 1099
