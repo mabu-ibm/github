@@ -1831,6 +1831,7 @@ com.instana.plugin.ibmopenstack:
     - host: 'openstack.lab.allwaysbeginner.com'
       port: '443'
       user: 'admin'
+      domain: 'admin_domain'
       password: '6btNzAPK39LE'
       project: 'admin'
       poll_rate: 15
